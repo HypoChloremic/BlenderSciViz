@@ -26,7 +26,7 @@ def generate_objects(func, geometry_name):
     coords, colors = func()
 
     # get icosphere mesh, deleting the object doesn't delete the mesh.
-    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, size=0.05)
+    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=0.05)
     obj = bpy.context.active_object
     mesh = obj.data
     mesh.name = 'SciVizIcoSphere'
@@ -38,7 +38,7 @@ def generate_objects(func, geometry_name):
         obj.location = coordinate
         obj.color = color
                   
-        scene = bpy.context.scene    
+        scene = bpy.context.collection    
         scene.objects.link(obj)
  
     
